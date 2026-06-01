@@ -2,6 +2,7 @@ package com.example.pennytracker
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -13,10 +14,12 @@ import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.*
 
 class Graphs : AppCompatActivity() {
 
+    private lateinit var bottomNav: BottomNavigationView
     private lateinit var pieChart: PieChart
     private lateinit var barChart: BarChart
 
@@ -55,6 +58,8 @@ class Graphs : AppCompatActivity() {
         btnFilter.setOnClickListener {
             loadData(selectedDate)
         }
+        bottomNav = findViewById(R.id.bottomNav)
+        setupBottomNav()
     }
 
     private fun loadData(filterDate: String = "") {
@@ -192,6 +197,30 @@ class Graphs : AppCompatActivity() {
             calendar.get(Calendar.DAY_OF_MONTH)
         )
         datePickerDialog.show()
+    }
+    private fun setupBottomNav() {
+        bottomNav.selectedItemId = R.id.nav_graphs
+        bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, Home::class.java)); finish(); true
+                }
+                R.id.nav_expenses -> {
+                    startActivity(Intent(this, Expenses::class.java)); finish(); true
+                }
+                R.id.nav_graphs -> true
+                R.id.nav_budget -> {
+                    startActivity(Intent(this, Budget::class.java)); finish(); true
+                }
+                R.id.nav_achievements -> {
+                    startActivity(Intent(this, Achievements::class.java)); finish(); true
+                }
+                R.id.nav_settings -> {
+                    startActivity(Intent(this, Settings::class.java)); finish(); true
+                }
+                else -> false
+            }
+        }
     }
 
 }
