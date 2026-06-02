@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var edtPassword: EditText
     private lateinit var btnLoginAcc: Button
 
-    //private lateinit var db : AppDatabase
+    //private late in it var db : AppDatabase
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

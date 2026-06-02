@@ -21,130 +21,95 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="24dp"
-            android:paddingBottom="16dp">
+            android:padding="16dp">
 
-            <!-- Page heading -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Spending Overview"
-                android:textAppearance="@style/TextAppearance.PennyTracker.PageHeading"
-                android:layout_marginBottom="20dp"
-                tools:ignore="HardcodedText"/>
-
-            <!-- Pie chart card -->
+            <!-- Monthly Budget Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp"
-                app:strokeColor="@color/card_stroke"
-                app:strokeWidth="1dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="12dp">
+                    android:padding="16dp">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monthly Budget"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tvTotalSpent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_spent_r0_00"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/tvBudget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/budget_r2000"
+                        android:layout_marginTop="4dp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBudget"
+                        style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="By Category"
-                        android:textAppearance="@style/TextAppearance.PennyTracker.FieldLabel"
-                        android:layout_marginBottom="8dp"
-                        tools:ignore="HardcodedText"/>
-
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:id="@+id/pieChart"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"/>
+                        android:layout_marginTop="16dp"
+                        android:max="100"
+                        android:progress="0"/>
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Bar chart card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
+            <!-- Category List -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp"
-                app:strokeColor="@color/card_stroke"
-                app:strokeWidth="1dp"
-                android:layout_marginBottom="20dp">
+                android:text="@string/by_category"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Monthly Trend"
-                        android:textAppearance="@style/TextAppearance.PennyTracker.FieldLabel"
-                        android:layout_marginBottom="8dp"
-                        tools:ignore="HardcodedText"/>
-
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Filter row -->
             <LinearLayout
+                android:id="@+id/categoryContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
-
-                <EditText
-                    android:id="@+id/edtFilterDate"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:focusable="false"
-                    android:hint="Select Date"
-
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:textColorHint="@color/text_hint"
-                    tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize"/>
-
-                <Button
-                    android:id="@+id/btnFilter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:text="Filter"
-                    android:backgroundTint="@color/primary"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginStart="10dp"
-                    style="@style/Widget.PennyTracker.Button"
-                    tools:ignore="HardcodedText"/>
-
-            </LinearLayout>
+                android:orientation="vertical"/>
 
         </LinearLayout>
     </ScrollView>
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/surface"
-        app:elevation="12dp"
+        android:background="?android:attr/windowBackground"
+        app:elevation="8dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav"/>
+        app:menu="@menu/bottom_nav"
+        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
