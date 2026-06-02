@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Expenses">
 
     <ScrollView
@@ -21,89 +22,198 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp">
 
+            <!-- Page heading: bold + italic -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/addExpense"
-                android:fontFamily="@font/baloo_bhai_2"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                android:textAppearance="@style/TextAppearance.PennyTracker.PageHeading"
+                android:layout_marginBottom="20dp"/>
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/amount" android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/edtAmount"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:inputType="numberDecimal" android:hint="@string/number"
-                android:autofillHints=""/>
+            <!-- Expense entry card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="24dp">
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/date" android:textStyle="bold" android:layout_marginTop="8dp"/>
-            <EditText
-                android:id="@+id/edtDate"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:hint="@string/dateFormat" android:importantForAutofill="no"
-                android:inputType="date" android:textColorHint="#546E7A"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/addCategory" android:textStyle="bold" android:layout_marginTop="8dp"/>
-            <EditText
-                android:id="@+id/edtCategory"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:inputType="text" android:hint="@string/category"
-                tools:ignore="Autofill"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount"
+                        android:textAppearance="@style/TextAppearance.PennyTracker.FieldLabel"
+                        android:layout_marginBottom="6dp"/>
+                    <EditText
+                        android:id="@+id/edtAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/number"
+                        android:autofillHints=""
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/description" android:textStyle="bold" android:layout_marginTop="8dp"/>
-            <EditText
-                android:id="@+id/edtDescription"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:inputType="text" android:hint="@string/addDescription"
-                tools:ignore="Autofill"/>
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColorHint="@color/text_hint"
+                        android:textColor="@color/text_primary"/>
 
-            <Button
-                android:id="@+id/btnPhoto"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:backgroundTint="#E7A834"
-                android:text="@string/uploadReceipt"
-                android:layout_marginTop="12dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date"
+                        android:textAppearance="@style/TextAppearance.PennyTracker.FieldLabel"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="6dp"/>
+                    <EditText
+                        android:id="@+id/edtDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="@string/dateFormat"
+                        android:importantForAutofill="no"
+                        android:inputType="date"
 
-            <Button
-                android:id="@+id/btnSaveExpenses"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:backgroundTint="#E7A834"
-                android:text="@string/save"
-                android:layout_marginTop="8dp"/>
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColorHint="@color/text_hint"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/addCategory"
+                        android:textAppearance="@style/TextAppearance.PennyTracker.FieldLabel"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="6dp"/>
+                    <EditText
+                        android:id="@+id/edtCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:inputType="text"
+                        android:hint="@string/category"
+
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColorHint="@color/text_hint"
+                        tools:ignore="Autofill"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:textAppearance="@style/TextAppearance.PennyTracker.FieldLabel"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="6dp"/>
+                    <EditText
+                        android:id="@+id/edtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:inputType="text"
+                        android:hint="@string/addDescription"
+
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColorHint="@color/text_hint"
+                        tools:ignore="Autofill"/>
+
+                    <Button
+                        android:id="@+id/btnPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/primary_light"
+                        android:textColor="@color/primary_dark"
+                        android:textStyle="bold"
+                        android:text="@string/uploadReceipt"
+                        android:layout_marginTop="16dp"
+                        style="@style/Widget.PennyTracker.Button"/>
+
+                    <Button
+                        android:id="@+id/btnSaveExpenses"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/primary"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="@string/save"
+                        android:layout_marginTop="8dp"
+                        style="@style/Widget.PennyTracker.Button"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Monthly Goals sub-section -->
             <TextView
                 android:id="@+id/tvMonthlyGoals"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/monthlyGoals"
-                android:textSize="16sp" android:textStyle="bold"
-                android:layout_marginTop="24dp"/>
+                android:textAppearance="@style/TextAppearance.PennyTracker.SectionLabel"
+                android:layout_marginBottom="16dp"/>
 
-            <EditText
-                android:id="@+id/edtMinGoal"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:inputType="text" android:hint="@string/minGoals"
-                android:importantForAutofill="no"/>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="16dp">
 
-            <EditText
-                android:id="@+id/edtMaxGoal"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:inputType="text" android:hint="@string/maxGoals"
-                android:layout_marginTop="8dp"
-                tools:ignore="Autofill"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-            <Button
-                android:id="@+id/btnSaveGoals"
-                android:layout_width="match_parent" android:layout_height="48dp"
-                android:backgroundTint="#E7A834"
-                android:text="@string/save"
-                android:layout_marginTop="8dp" android:layout_marginBottom="8dp"/>
+                    <EditText
+                        android:id="@+id/edtMinGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:inputType="text"
+                        android:hint="@string/minGoals"
+                        android:importantForAutofill="no"
+
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColorHint="@color/text_hint"/>
+
+                    <EditText
+                        android:id="@+id/edtMaxGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:inputType="text"
+                        android:hint="@string/maxGoals"
+
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColorHint="@color/text_hint"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="Autofill"/>
+
+                    <Button
+                        android:id="@+id/btnSaveGoals"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/primary"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="@string/save"
+                        android:layout_marginTop="12dp"
+                        style="@style/Widget.PennyTracker.Button"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
@@ -112,8 +222,8 @@
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:elevation="8dp"
+        android:background="@color/surface"
+        app:elevation="12dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
