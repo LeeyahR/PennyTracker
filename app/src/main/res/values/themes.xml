@@ -1,9 +1,63 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.PennyTracker" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSecondaryContainer">@color/primary_light</item>
+
+        <!-- EditText / TextInputLayout styling -->
+        <item name="editTextStyle">@style/Widget.PennyTracker.EditText</item>
+        <item name="materialButtonStyle">@style/Widget.PennyTracker.Button</item>
     </style>
 
     <style name="Theme.PennyTracker" parent="Base.Theme.PennyTracker" />
+
+    <!-- Shared EditText style: outlined, rounded -->
+    <style name="Widget.PennyTracker.EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+
+    <!-- Primary button style -->
+    <style name="Widget.PennyTracker.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+    <!-- Danger button (red) -->
+    <style name="Widget.PennyTracker.Button.Danger">
+        <item name="android:backgroundTint">@color/red_danger</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Section heading: bold + italic -->
+    <style name="TextAppearance.PennyTracker.PageHeading">
+        <item name="android:fontFamily">@font/baloo_bhai_2</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <!-- Sub-section labels -->
+    <style name="TextAppearance.PennyTracker.SectionLabel">
+        <item name="android:fontFamily">@font/baloo_bhai_2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Field labels -->
+    <style name="TextAppearance.PennyTracker.FieldLabel">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
 </resources>
